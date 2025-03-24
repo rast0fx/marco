@@ -466,6 +466,46 @@
                 padding: 1rem;
             }
         }
+
+        .combat-info {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+        }
+
+        .combat-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        }
+
+        .combat-info p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .fitness-stats {
+            display: flex;
+            gap: clamp(1rem, 3vw, 2rem);
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .combat-info {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .combat-info {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -503,11 +543,28 @@
         </section>
 
         <section class="hobby-section">
-            <h2><i class="fas fa-dumbbell"></i> Fitness & Working Out</h2>
+            <h2><i class="fas fa-dumbbell"></i> Fitness & Combat Sports</h2>
             <div class="hobby-card">
-                <h3><i class="fas fa-running"></i> My Fitness Routine</h3>
-                <p>Working out is a crucial part of my daily routine. I prefer solo workouts that help me stay focused and motivated.</p>
-               
+                <h3><i class="fas fa-running"></i> My Fitness Journey</h3>
+                <p>Working out and combat sports are crucial parts of my daily routine. I love the discipline, physical challenge, and mental toughness that comes with both regular workouts and combat training.</p>
+                <div class="fitness-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>Started combat sports at age: 15</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Regular training</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>Strength & Conditioning</span>
+                    </div>
+                </div>
+                <div class="combat-info">
+                    <h4><i class="fas fa-fist-raised"></i> Combat Sports</h4>
+                    <p>I love the discipline and challenge that comes with wrestling and combat training. It's not just about physical strength, but also mental toughness and strategy.</p>
+                </div>
             </div>
         </section>
 
@@ -546,28 +603,6 @@
         </section>
 
         <section class="hobby-section">
-            <h2><i class="fas fa-fist-raised"></i> Combat Sports</h2>
-            <div class="hobby-card">
-                <h3><i class="fas fa-user-shield"></i> Wrestling & Combat Training</h3>
-                <p>Combat sports are a significant part of my life. I love the discipline, physical challenge, and mental toughness that comes with wrestling and combat training.</p>
-                <div class="combat-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>Started at age: 13</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-trophy"></i>
-                        <span>Regular training</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-dumbbell"></i>
-                        <span>Strength & Conditioning</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="hobby-section">
             <h2><i class="fas fa-film"></i> Entertainment</h2>
             <div class="hobby-grid">
                 <div class="hobby-card">
@@ -592,7 +627,7 @@
                             <div class="story-item">
                                 <i class="fas fa-calendar"></i>
                                 <span>May 2024</span>
-                                <p>At age 15, joined USAR and discovered 1CAV tryouts at the pavs. After passing, joined Ironhorse but left after 11 days due to slow pace.</p>
+                                <p>Joined USAR and discovered 1CAV tryouts at the pavs. After passing, joined Ironhorse but left after 11 days due to slow pace.</p>
                             </div>
                             <div class="story-item">
                                 <i class="fas fa-calendar"></i>
