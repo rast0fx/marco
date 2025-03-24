@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #008080; /* Teal */
+            --secondary-color: #f5f5f5; /* Light grey */
+            --text-color: #333;
+            --white: #ffffff;
+            --accent-color: #00a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+        }
+
+        .hobby-section {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hobby-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .hobby-section:hover::before {
+            transform: scaleX(1);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        h2 i {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .hobby-card {
+            background-color: var(--white);
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .music-player {
+            background-color: var(--white);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            border-radius: 12px;
+            margin-top: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            border: none;
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 500;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,128,128,0.3);
+        }
+
+        .movie-quote {
+            font-style: italic;
+            margin: 1rem 0;
+            padding: clamp(1rem, 3vw, 1.5rem);
+            background-color: var(--white);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            animation: fadeIn 0.5s ease;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .movie-quote::before {
+            content: '"';
+            font-size: clamp(3rem, 8vw, 4rem);
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .stats {
+            display: flex;
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .stat-item i {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        .pet-info {
+            margin-top: 2rem;
+        }
+
+        .pet-stats {
+            display: flex;
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .pet-activities {
+            background-color: var(--secondary-color);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            border-radius: 12px;
+        }
+
+        .pet-activities h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        }
+
+        .pet-activities ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pet-activities li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .pet-activities li:hover {
+            transform: translateX(10px);
+        }
+
+        .pet-activities li i {
+            color: var(--primary-color);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hobby-section {
+                padding: 1.5rem;
+            }
+
+            .hobby-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats, .pet-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pet-activities li {
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 2rem 1rem;
+            }
+
+            .hobby-section {
+                padding: 1rem;
+            }
+
+            .hobby-card {
+                padding: 1rem;
+            }
+
+            .movie-quote {
+                padding: 1rem;
+            }
+
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .watermark {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .hobby-section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            button {
+                display: none;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: var(--primary-color);
+            opacity: 0.9;
+            font-size: 1rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 128, 128, 0.2);
+        }
+
+        .watermark:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.2);
+            background-color: var(--white);
+        }
+
+        .usar-story {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+        }
+
+        .usar-story h4 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        }
+
+        .story-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .story-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .story-item:hover {
+            transform: translateX(10px);
+        }
+
+        .story-item i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .story-item span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .story-item p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .story-item {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .usar-story {
+                padding: 1rem;
+            }
+
+            .story-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-heart"></i> A glimpse into my favorite activities </h1>
+        <a href="https://rast0fx.github.io/PotrfolioV1/" target="_blank" class="watermark">
+            Made by Mhamad Koussa (rast0fx)
+        </a>
+    </header>
+
+   
+
+    <div class="container">
+        <section class="hobby-section">
+            <h2><i class="fas fa-music"></i> Music</h2>
+            <div class="hobby-card">
+                <h3><i class="fas fa-headphones"></i> My Music Journey</h3>
+                <p>I love listening to music in my free time. It's my go-to activity for relaxation and motivation.</p>
+                <div class="music-player">
+                    <p>Current favorite song: <span id="current-song">Loading...</span></p>
+                    <button onclick="changeSong()">
+                        <i class="fas fa-play"></i> Change Song
+                    </button>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-music"></i>
+                        <span>Favorite genre: Hip Gop, Rap, R&B, and Rock </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hobby-section">
+            <h2><i class="fas fa-dumbbell"></i> Fitness & Working Out</h2>
+            <div class="hobby-card">
+                <h3><i class="fas fa-running"></i> My Fitness Routine</h3>
+                <p>Working out is a crucial part of my daily routine. I prefer solo workouts that help me stay focused and motivated.</p>
+               
+            </div>
+        </section>
+
+        <section class="hobby-section">
+            <h2><i class="fas fa-paw"></i> My Dog</h2>
+            <div class="hobby-card">
+                <h3><i class="fas fa-dog"></i> Meet My Best Friend</h3>
+                <p>Having a dog brings so much joy to my life. They're not just pets, they're family members who bring unconditional love and happiness.</p>
+                <div class="pet-info">
+                    <div class="pet-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Age: 13 years old</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-bone"></i>
+                            <span>Favorite treat: Carrots</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Big appetite</span>
+                        </div>
+                    </div>
+                    <div class="pet-activities">
+                        <h4><i class="fas fa-list"></i> Personality & Habits</h4>
+                        <ul>
+                            <li><i class="fas fa-couch"></i> Loves sleeping on the couch</li>
+                            <li><i class="fas fa-users"></i> Gets excited when people visit</li>
+                            <li><i class="fas fa-hand-paper"></i> Enjoys being scratched</li>
+                            <li><i class="fas fa-running"></i> Going for walks</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hobby-section">
+            <h2><i class="fas fa-film"></i> Entertainment</h2>
+            <div class="hobby-grid">
+                <div class="hobby-card">
+                    <h3><i class="fas fa-tv"></i> Movies & Shows</h3>
+                    <p>I enjoy watching movies and TV shows to unwind and pass time.</p>
+                    <div class="movie-quote" id="movie-quote">
+                        Loading quote...
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <i class="fas fa-film"></i>
+                            <span>Favorite genre: Action</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hobby-card">
+                    <h3><i class="fas fa-gamepad"></i> Gaming</h3>
+                    <p>Gaming is one of my favorite pastimes, with USAR being a significant part of my gaming experience.</p>
+                    <div class="usar-story">
+                        <h4><i class="fas fa-history"></i> My USAR Journey</h4>
+                        <div class="story-timeline">
+                            <div class="story-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>May 2024</span>
+                                <p>Joined USAR and discovered 1CAV tryouts at the pavs. After passing, joined Ironhorse but left after 11 days due to slow pace.</p>
+                            </div>
+                            <div class="story-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>October 2024</span>
+                                <p>Returned to USAR and joined 82nd, finding a much more engaging experience with great friends.</p>
+                            </div>
+                            <div class="story-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Career Progression</span>
+                                <p>Started as Platoon Sergeant, climbed through Platoon Staff to Company Commander, with aspirations for Brigade HICOM and beyond.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>2-3 hours daily</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <span><a href="https://discord.gg/BCEwJMqAyj" target="_blank">USAR Community</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Sample songs array
+        const songs = [
+            "God's Plan - Drake",
+            "SICKO MODE - Travis Scott",
+            "No Role Modelz - J. Cole",
+            "Blinding Lights - The Weeknd",
+            "In Da Club - 50 Cent",
+            "Stronger - Kanye West",
+            "Lose Yourself - Eminem",
+            "Hotline Bling - Drake",
+            "Can't Hold Us - Macklemore & Ryan Lewis",
+            "Started From The Bottom - Drake"
+        ];
+
+        // Sample movie quotes
+        const movieQuotes = [
+            "Life is like a box of chocolates, you never know what you're gonna get.",
+            "I'll be back.",
+            "May the Force be with you.",
+            "I am Iron Man.",
+            "I see dead people."
+        ];
+
+        let currentSongIndex = 0;
+        let currentQuoteIndex = 0;
+
+        function changeSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            const songElement = document.getElementById('current-song');
+            songElement.style.opacity = '0';
+            setTimeout(() => {
+                songElement.textContent = songs[currentSongIndex];
+                songElement.style.opacity = '1';
+            }, 300);
+        }
+
+        function changeQuote() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % movieQuotes.length;
+            const quoteElement = document.getElementById('movie-quote');
+            quoteElement.style.opacity = '0';
+            setTimeout(() => {
+                quoteElement.textContent = movieQuotes[currentQuoteIndex];
+                quoteElement.style.opacity = '1';
+            }, 300);
+        }
+
+        // Initialize content
+        document.getElementById('current-song').textContent = songs[0];
+        document.getElementById('movie-quote').textContent = movieQuotes[0];
+
+        // Change quote every 5 seconds
+        setInterval(changeQuote, 5000);
+    </script>
+</body>
+</html> 
